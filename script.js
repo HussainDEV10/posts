@@ -1,3 +1,18 @@
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+
+// تهيئة Firebase Authentication
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // المستخدم مسجل الدخول
+        const emailDisplay = document.getElementById('userEmailDisplay');
+        emailDisplay.textContent = `مرحبًا، ${user.email}`;
+    } else {
+        // إذا لم يكن هناك مستخدم مسجل الدخول، يمكن إعادة توجيه المستخدم إلى صفحة تسجيل الدخول أو عرض رسالة
+        // window.location.href = '/تسجيلدخول.html';
+    }
+});
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
     import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, serverTimestamp, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
